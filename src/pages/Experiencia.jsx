@@ -6,7 +6,7 @@ const Experiencia = () => (
     <video
       controls
       style={{ width: "100%", borderRadius: 8 }}
-      src="https://www.w3schools.com/html/mov_bbb.mp4"
+      src="https://www.youtube.com/watch?v=fs9ZAlT4TZw"
     >
       Tu navegador no soporta el elemento de video.
     </video>
