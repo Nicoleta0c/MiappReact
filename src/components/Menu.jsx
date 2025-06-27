@@ -1,69 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const linkStyle = {
-  color: "white",
-  textDecoration: "none",
-  padding: "10px 0",
-  fontSize: "18px",
-};
+const Menu = () => {
+  const [open, setOpen] = useState(false);
 
-const Menu = ({ open, toggle }) => (
-  <div
-    style={{
-      position: "fixed",
-      top: 0,
-      left: open ? 0 : "-220px",
-      width: 220,
-      height: "100%",
-      backgroundColor: "#222",
-      color: "white",
-      transition: "left 0.3s ease",
-      paddingTop: 60,
-      boxSizing: "border-box",
-      zIndex: 1000,
-    }}
-  >
-    <button
-      onClick={toggle}
-      style={{
-        position: "absolute",
-        top: 10,
-        right: 10,
-        background: "transparent",
-        border: "none",
-        color: "white",
-        fontSize: 24,
-        cursor: "pointer",
-      }}
-      aria-label="Cerrar menú"
-    >
-      ×
-    </button>
-    <nav
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        paddingLeft: 20,
-      }}
-    >
-      <Link to="/home" onClick={toggle} style={linkStyle}>
-        Pagina Inicial
-      </Link>
-      <Link to="/sumadora" onClick={toggle} style={linkStyle}>
-        Sumadora
-      </Link>
-      <Link to="/traductor" onClick={toggle} style={linkStyle}>
-        Traductor Numero a Letras
-      </Link>
-      <Link to="/tabla" onClick={toggle} style={linkStyle}>
-        Tabla de Multiplicar
-      </Link>
-      <Link to="/experiencia" onClick={toggle} style={linkStyle}>
-        Experiencia Personal
-      </Link>
-    </nav>
-  </div>
-);
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          backgroundColor: "#222",
+          color: "white",
+          padding: "10px 20px",
+          fontSize: "16px",
+          border: "none",
+          cursor: "pointer",
+          marginBottom: "10px",
+        }}
+      >
+        {open ? "Cerrar Menu" : "Abrir Menu"}
+      </button>
+
+      {open && (
+        <nav
+          style={{
+            background: "#222",
+            color: "white",
+            padding: "20px",
+            borderRadius: "4px",
+          }}
+        >
+          <ul style={{ listStyle: "none", padding: 0 }}>
+            <li>
+              <Link style={{ color: "white" }} to="/home" onClick={() => setOpen(false)}>
+                Portada
+              </Link>
+            </li>
+             <li>
+              <Link style={{ color: "white" }} to="/personajes" onClick={() => setOpen(false)}>
+                Personajes
+              </Link>
+            </li>
+            <li>
+              <Link style={{ color: "white" }} to="/momentos" onClick={() => setOpen(false)}>
+                momentos
+              </Link>
+            </li>
+            <li>
+              <Link style={{ color: "white" }} to="/acerca" onClick={() => setOpen(false)}>
+                acerca del creador
+              </Link>
+            </li>
+            <li>
+              <Link style={{ color: "white" }} to="/vida" onClick={() => setOpen(false)}>
+                En mi vida
+              </Link>
+            </li>
+            <li>
+              <Link style={{ color: "white" }} to="/conctactame" onClick={() => setOpen(false)}>
+                Contratame
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </div>
+  );
+};
 
 export default Menu;
